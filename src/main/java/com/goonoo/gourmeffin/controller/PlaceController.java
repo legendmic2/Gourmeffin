@@ -4,6 +4,7 @@ import com.goonoo.gourmeffin.dto.PlaceDTO;
 import com.goonoo.gourmeffin.dto.ResponseDTO;
 import com.goonoo.gourmeffin.model.PlaceEntity;
 import com.goonoo.gourmeffin.service.PlaceService;
+import com.goonoo.gourmeffin.service.PlaceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +17,17 @@ import java.util.stream.Collectors;
 @RequestMapping("place")
 public class PlaceController {
 
-    @Autowired
-    private PlaceService service;
+    private final PlaceService service;
+
+    public PlaceController(PlaceService service) {
+        this.service = service;
+    }
 
     @GetMapping("/test")
     public ResponseEntity<?> testPlace(){
-        String str = service.testService();
+//        String str = service.testService();
         List<String> list = new ArrayList<>();
-        list.add(str);
+//        list.add(str);
         ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
         return ResponseEntity.ok().body(response);
     }
