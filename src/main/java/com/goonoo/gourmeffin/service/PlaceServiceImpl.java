@@ -13,23 +13,10 @@ import java.util.Optional;
 @Service
 public class PlaceServiceImpl implements PlaceService {
 
-    @Autowired
-    private PlaceRepository repository;
+    private final PlaceRepository repository;
 
-    public String testService() {
-        // PlaceEntity 생성
-        PlaceEntity entity = PlaceEntity.builder()
-                .name("테스트맛집")
-                .address("테스트시 테스트구 테스트동")
-                .placeType("테스트음식")
-                .description("테스트를 위한 맛집입니다")
-                .rating(3.0)
-                .build();
-        // PlaceEntity 저장
-        repository.save(entity);
-        // PlaceEntity 검색
-        PlaceEntity savedEntity = repository.findById(entity.getId()).get();
-        return savedEntity.getName();
+    public PlaceServiceImpl(PlaceRepository repository) {
+        this.repository = repository;
     }
 
     public List<PlaceEntity> create(final PlaceEntity entity) {

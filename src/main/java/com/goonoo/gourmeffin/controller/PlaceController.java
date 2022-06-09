@@ -23,15 +23,6 @@ public class PlaceController {
         this.service = service;
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<?> testPlace(){
-//        String str = service.testService();
-        List<String> list = new ArrayList<>();
-//        list.add(str);
-        ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
-        return ResponseEntity.ok().body(response);
-    }
-
     @PostMapping
     public ResponseEntity<?> createPlace(@RequestBody PlaceDTO dto) {
         // @AuthenticationPrincipal String userId
