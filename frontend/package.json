@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/navermaps": "^3.0.16",
     "@types/react-router-dom": "^5.3.3"
   }
 }

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import {useAppContext} from "../app-context";
 import Place from "../components/Place";
+import NaverMap from "../components/NaverMap";
 
 const HomePage = observer(() => {
     const {api, store} = useAppContext();
@@ -31,7 +32,9 @@ const HomePage = observer(() => {
             {store.place.all.map((place) => (
                 <Place place={place} key={place.id}/>
             ))}
+            <NaverMap />
         </div>
+
     );
 });
 
